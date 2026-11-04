@@ -1,87 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClosedLoop Strategy | Independent Neurotechnology Advisory</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #121214; color: #e1e1e6; margin: 0; padding: 0; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { padding: 80px 0; border-bottom: 1px solid #29292e; text-align: center; }
-        h1 { font-size: 2.8rem; color: #ffffff; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.5px; }
-        .subtitle { font-size: 1.4rem; color: #a8a8b3; margin-bottom: 40px; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto; }
-        .btn { display: inline-block; background-color: #4f46e5; color: #ffffff; padding: 14px 28px; text-decoration: none; font-weight: 600; border-radius: 6px; transition: background 0.2s; }
-        .btn:hover { background-color: #4338ca; }
-        .section { padding: 60px 0; border-bottom: 1px solid #29292e; }
-        h2 { font-size: 1.8rem; color: #ffffff; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px; }
-        .card { background-color: #1d1d22; padding: 30px; border-radius: 8px; border: 1px solid #29292e; }
-        .card h3 { color: #38bdf8; margin-top: 0; font-size: 1.3rem; }
-        .card ul { padding-left: 20px; margin-bottom: 0; color: #c4c4cc; }
-        .card li { margin-bottom: 10px; }
-        .contact-box { background: linear-gradient(135deg, #1d1d22 0%, #141419 100%); padding: 40px; border-radius: 8px; border: 1px solid #29292e; text-align: center; }
-        footer { text-align: center; padding: 40px 0; color: #7c7c8a; font-size: 0.9rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a20">
+  <meta name="description" content="ClosedLoop Strategy provides independent, research-informed strategic advisory and analysis across neurotechnology, medical innovation, and clinical translation.">
+  <title>ClosedLoop Strategy | Independent Neurotechnology & Medtech Advisory</title>
+  <style>
+    :root {
+      --ink: #172329;
+      --muted: #5d6b70;
+      --paper: #f5f6f3;
+      --white: #ffffff;
+      --deep: #101a20;
+      --deep-2: #17262d;
+      --line: rgba(23, 35, 41, .14);
+      --line-light: rgba(255,255,255,.16);
+      --accent: #83b7ad;
+      --accent-dark: #356d64;
+      --max: 1160px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 5;
+      color: #f5f7f4;
+      border-bottom: 1px solid var(--line-light);
+    }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1.15;
+      letter-spacing: .15em;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .brand span:last-child {
+      margin-top: 6px;
+      color: #a9b9b8;
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .19em;
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a {
+      color: #d6dfdc;
+      text-decoration: none;
+      font-size: .78rem;
+      letter-spacing: .04em;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .nav-contact {
+      border: 1px solid rgba(255,255,255,.4);
+      padding: 10px 15px;
+    }
+
+    .hero {
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      color: #f5f7f4;
+      background:
+        radial-gradient(ellipse at 78% 38%, rgba(103,154,147,.18), transparent 34%),
+        radial-gradient(ellipse at 16% 88%, rgba(91,126,130,.12), transparent 38%),
+        linear-gradient(125deg, #101a20 0%, #17262d 58%, #1b3035 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      right: -210px;
+      bottom: -300px;
+      border: 1px solid rgba(131,183,173,.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 48px rgba(131,183,173,.035), 0 0 0 98px rgba(131,183,173,.025);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; padding: 160px 0 112px; max-width: 900px; }
+    .eyebrow {
+      color: var(--accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 850px;
+      margin: 25px 0 24px;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.04;
+    }
+    .hero-subtitle {
+      max-width: 700px;
+      color: #c4d0ce;
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      line-height: 1.8;
+    }
+    .hero-statement {
+      margin: 34px 0 36px;
+      padding-left: 18px;
+      border-left: 2px solid var(--accent);
+      color: #edf2ef;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+      line-height: 1.45;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 12px 20px;
+      color: var(--deep);
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .045em;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: #a0c9c0; transform: translateY(-2px); }
+    .button-outline {
+      color: #f5f7f4;
+      background: transparent;
+      border-color: rgba(255,255,255,.4);
+    }
+    .button-outline:hover { color: var(--deep); }
+
+    section { padding: 112px 0; }
+    .section-heading { max-width: 760px; margin-bottom: 54px; }
+    .section-heading h2 {
+      margin: 14px 0 18px;
+      font-family: var(--serif);
+      font-size: clamp(2.35rem, 4.5vw, 3.65rem);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.12;
+    }
+    .section-heading p { color: var(--muted); font-size: 1.04rem; }
+    .perspective { background: #fff; }
+    .perspective-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 90px;
+      align-items: start;
+    }
+    .perspective-lead {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.42;
+      letter-spacing: -.02em;
+    }
+    .body-copy { color: var(--muted); }
+    .principle {
+      padding: 30px;
+      background: var(--paper);
+      border-top: 2px solid var(--accent-dark);
+    }
+    .principle .eyebrow { color: var(--accent-dark); }
+    .principle p {
+      margin: 16px 0 0;
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      line-height: 1.5;
+    }
+
+    .advisory { background: #edf0ed; }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .service-card {
+      min-height: 330px;
+      padding: 38px;
+      background: #f8f9f6;
+    }
+    .service-number {
+      color: var(--accent-dark);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+    .service-card h3 {
+      max-width: 440px;
+      margin: 22px 0 15px;
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .service-card p { color: var(--muted); }
+    .service-card ul {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #34454b;
+      font-size: .91rem;
+    }
+    .service-card li { position: relative; margin: 9px 0; padding-left: 17px; }
+    .service-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-dark);
+    }
+
+    .principal { background: #fff; }
+    .principal-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 90px;
+    }
+    .principal-aside {
+      padding-top: 8px;
+      color: var(--muted);
+      font-size: .84rem;
+      letter-spacing: .04em;
+    }
+    .principal-aside strong {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: .76rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .principal-copy h2 {
+      margin: 12px 0 27px;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.7rem);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.12;
+    }
+    .principal-copy p { color: var(--muted); font-size: 1rem; }
+    .principal-copy p + p { margin-top: 18px; }
+
+    .contact {
+      color: #f5f7f4;
+      background:
+        radial-gradient(ellipse at 85% 10%, rgba(103,154,147,.16), transparent 34%),
+        var(--deep);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 50px;
+      align-items: end;
+    }
+    .contact h2 {
+      max-width: 700px;
+      margin: 14px 0 20px;
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+    }
+    .contact p { max-width: 680px; color: #c1cecb; }
+    .contact-email {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--accent);
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(131,183,173,.5);
+      padding-bottom: 4px;
+    }
+    .contact-email:hover { color: #b4d9d0; }
+    .site-footer {
+      padding: 26px 0;
+      color: #9eaeab;
+      background: #0b1318;
+      font-size: .75rem;
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .footer-inner a { color: #c5d1ce; text-decoration: none; }
+    .footer-inner a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, var(--max)); }
+      .nav { min-height: 72px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .7rem; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .hero { min-height: 680px; }
+      .hero-content { padding: 145px 0 90px; }
+      section { padding: 78px 0; }
+      .perspective-grid, .principal-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+      .section-heading { margin-bottom: 36px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; padding: 30px 25px; }
+      .contact-grid { align-items: start; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>CLOSEDLOOP STRATEGY</h1>
-            <p class="subtitle">Independent Brain Technology & Neurotechnology Advisory<br><span style="font-size: 1.1rem; color: #7c7c8a;">Helping founders, investors, and technology leaders navigate the emerging brain-tech landscape.</span></p>
-            <a href="mailto:info@closedloopstrategy.tech" class="btn">Schedule a Strategic Briefing</a>
-        </header>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="ClosedLoop Strategy home">
+        <span>CLOSEDLOOP STRATEGY</span>
+        <span>INDEPENDENT ADVISORY</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#perspective">Our perspective</a>
+        <a href="#advisory">Advisory</a>
+        <a href="#principal">Principal</a>
+        <a class="nav-contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-        <section class="section">
-            <h2>Translational Systems Mapping</h2>
-            <p style="font-size: 1.1rem; color: #c4c4cc;">We analyze the complete translational and implementation pipeline for neurotechnology and advanced medical devices. Mapping everything from the device architecture to lifecycle needs, we ensure advanced technologies successfully transition from research environments into clinical reality.</p>
-        </section>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-content">
+        <div class="eyebrow">Independent Neurotechnology &amp; Medtech Strategic Advisory</div>
+        <h1>Making sense of complexity in neurotechnology and medical innovation.</h1>
+        <p class="hero-subtitle">
+          Research-informed intelligence and strategic analysis for organizations navigating
+          complex medical technologies, clinical translation, and emerging neurotechnology ecosystems.
+        </p>
+        <p class="hero-statement">Beyond technological feasibility. Towards meaningful clinical and real-world value.</p>
+        <a class="button" href="#contact">Request a Confidential Discussion <span aria-hidden="true">&nbsp;↗</span></a>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2>Core Capabilities</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Adaptive & Closed-Loop Evaluation</h3>
-                    <ul>
-                        <li>Feedback loop algorithmic strategy and compliance frameworks.</li>
-                        <li>Brain-Computer Interface (BCI) architecture optimization.</li>
-                        <li>Next-generation neuro-engineering project scoping and risk management.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Governance & Regulation</h3>
-                    <ul>
-                        <li>Navigating the modern compliance landscape.</li>
-                        <li>Analysis of current regulatory documents and institutional frameworks.</li>
-                        <li>Emerging governance guidelines to clear the path for clinical approval.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Market Integration</h3>
-                    <ul>
-                        <li>Bridging the gap between engineering and economics.</li>
-                        <li>Capturing clinical feedback and mapping patient needs.</li>
-                        <li>Systematic analysis of budget, economic opportunities, and barriers across international markets.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <section class="perspective" id="perspective">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Our perspective</div>
+          <h2>Understanding the systems behind technological success.</h2>
+        </div>
+        <div class="perspective-grid">
+          <div>
+            <p class="perspective-lead">
+              A technology can be scientifically promising, technically functional, and successfully
+              developed — yet fail to deliver meaningful clinical, commercial, or institutional value.
+            </p>
+            <p class="body-copy">
+              The path from technological innovation to real-world impact involves much more than the
+              device itself. ClosedLoop Strategy examines the interconnected scientific, technological,
+              clinical, commercial, and institutional factors that shape the development, adoption,
+              and long-term viability of neurotechnology and advanced medical devices.
+            </p>
+            <p class="body-copy">
+              Through independent research, structured analysis, and strategic advisory, we help
+              organizations identify opportunities, understand dependencies, anticipate barriers,
+              and evaluate the conditions required for technologies to create meaningful value.
+            </p>
+          </div>
+          <aside class="principle">
+            <div class="eyebrow">The underlying question</div>
+            <p>What needs to be true — beyond the technology itself — for an innovation to create lasting value?</p>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-        <section class="section">
-            <h2>About the Principal</h2>
-            <p style="font-size: 1.1rem; color: #c4c4cc;">Operating internationally, ClosedLoop Strategy is led by an independent expert and active neuroscience researcher specializing in the implementation, governance, and lifestyle mapping of complex medtech ecosystems.</p>
-        </section>
-
-        <div class="section" style="border-bottom: none;">
-            <div class="contact-box">
-                <h2>Secure Your Strategy</h2>
-                <p style="color: #a8a8b3; margin-bottom: 25px;">Operating globally. Reach out to map your product's international trajectory.</p>
-                <a href="mailto:info@closedloopstrategy.tech" style="color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 1.2rem;">info@closedloopstrategy.tech</a>
-            </div>
+    <section class="advisory" id="advisory">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Areas of advisory</div>
+          <h2>Independent analysis for complex decisions.</h2>
+          <p>
+            Focused research and strategic guidance for founders, investors, medical technology
+            companies, healthcare organizations, and institutional decision-makers.
+          </p>
         </div>
 
-        <footer>
-            &copy; 2026 ClosedLoop Strategy. All rights reserved.
-        </footer>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-number">01 / TECHNOLOGY INTELLIGENCE</div>
+            <h3>Technology &amp; Neurotechnology Intelligence</h3>
+            <p>Independent assessment of emerging technologies, their capabilities, maturity, limitations, and strategic potential.</p>
+            <ul>
+              <li>Neurotechnology and medical device assessments</li>
+              <li>Closed-loop and adaptive system considerations</li>
+              <li>Technology maturity and development pathways</li>
+              <li>Market intelligence and emerging opportunities</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">02 / CLINICAL TRANSLATION</div>
+            <h3>Clinical Translation &amp; Adoption</h3>
+            <p>Examining the transition from scientific and technological innovation to clinical application and healthcare delivery.</p>
+            <ul>
+              <li>Clinical translation and adoption assessments</li>
+              <li>Evaluation of clinical applicability and potential utility</li>
+              <li>Implementation barriers and institutional dependencies</li>
+              <li>Clinical workflows, stakeholder needs, and patient-oriented outcomes</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">03 / ECOSYSTEM &amp; LIFECYCLE</div>
+            <h3>Strategic Ecosystem &amp; Lifecycle Analysis</h3>
+            <p>Understanding the interconnected environments that influence the development and long-term viability of medical technologies.</p>
+            <ul>
+              <li>Technology lifecycle and ecosystem mapping</li>
+              <li>Stakeholder and institutional landscape analysis</li>
+              <li>Governance and strategic risk considerations</li>
+              <li>Identification of overlooked dependencies and opportunities</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-number">04 / STRATEGIC &amp; INVESTMENT ADVISORY</div>
+            <h3>Independent Strategic &amp; Investment Advisory</h3>
+            <p>Independent analytical perspectives for decision-makers navigating complex technology and investment decisions.</p>
+            <ul>
+              <li>Commissioned research and analytical reports</li>
+              <li>Independent technology and opportunity assessments</li>
+              <li>Strategic recommendations for leadership and investors</li>
+              <li>Confidential, session-based strategic advisory</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principal" id="principal">
+      <div class="wrap principal-grid">
+        <aside class="principal-aside">
+          <strong>ClosedLoop Strategy</strong>
+          Principal<br>
+          Independent research &amp; advisory
+        </aside>
+        <div class="principal-copy">
+          <div class="eyebrow">About the principal</div>
+          <h2>An independent perspective grounded in neuroscience and systems thinking.</h2>
+          <p>
+            ClosedLoop Strategy is led by an independent strategic advisor and active neuroscience
+            researcher with a background in neuroscience and a particular interest in closed-loop
+            neurotechnology, adaptive systems, and the translation of advanced technologies into
+            clinical applications.
+          </p>
+          <p>
+            The Principal holds a Master's degree in Neuroscience and is currently engaged in research
+            examining the stability of neural-state classification in adaptive deep brain stimulation
+            systems across sessions and subjects, including the role of neural drift, recalibration,
+            and other factors influencing adaptive system performance.
+          </p>
+          <p>
+            This research informs a broader interest in the conditions that determine whether advanced
+            technologies can operate reliably and deliver meaningful value beyond controlled research
+            environments.
+          </p>
+          <p>
+            Beyond neurotechnology, the advisory perspective extends to medical technology development,
+            clinical translation, healthcare adoption, and the scientific, technological, and
+            institutional ecosystems surrounding innovation.
+          </p>
+          <p>
+            The approach combines scientific understanding, independent analysis, and systems-level
+            thinking to help organizations navigate complex decisions with greater clarity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="eyebrow">Confidential strategic enquiries</div>
+          <h2>Complex technologies require an independent perspective.</h2>
+          <p>
+            Whether evaluating an emerging neurotechnology, examining a potential investment,
+            assessing clinical translation opportunities, or navigating a complex medical technology
+            ecosystem, ClosedLoop Strategy provides independent analytical support to inform
+            strategic decision-making.
+          </p>
+          <p>Engagements are tailored to the specific questions, objectives, and context of each inquiry.</p>
+          <p><strong>Operating internationally. Engaging selectively. Working independently.</strong></p>
+          <a class="contact-email" href="mailto:info@closedloopstrategy.tech?subject=Confidential%20strategic%20enquiry">
+            info@closedloopstrategy.tech
+          </a>
+        </div>
+        <div>
+          <a class="button" href="mailto:info@closedloopstrategy.tech?subject=Confidential%20strategic%20enquiry">
+            Send a Confidential Enquiry <span aria-hidden="true">&nbsp;↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> ClosedLoop Strategy. All rights reserved.</span>
+      <a href="#top">Back to top ↑</a>
     </div>
+  </footer>
+  <script>
+    // Keeps the copyright year current without requiring a build step.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
